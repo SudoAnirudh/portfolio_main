@@ -62,3 +62,4 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(skill.element); // Observe each skill fill
     });
 });
+
