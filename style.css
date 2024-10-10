@@ -332,3 +332,63 @@ footer p {
         opacity: 1;
     }
 }
+/* Skills Section *
+/* Skills Section */
+#skills {
+    padding: 50px 0;
+    background: #fff;
+}
+
+#skills h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.skill {
+    margin-bottom: 20px;
+}
+
+.skill h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.skill-bar {
+    background: #e0e0e0;
+    border-radius: 5px;
+    height: 20px; /* Height of the skill bar */
+    width: 100%; /* Full width */
+    overflow: hidden; /* Ensures no overflow of the filled area */
+    position: relative; /* Positioning for animation */
+}
+
+.skill-fill {
+    height: 100%;
+    border-radius: 5px;
+    width: 0; /* Start with width 0 for animation */
+    position: absolute; /* Position it absolutely */
+    left: 0; /* Align to the left */
+    transition: width 1s ease; /* Smooth transition */
+}
+
+/* Skill Levels - these are now just for background colors */
+.python {
+    background: #f39c12;
+}
+
+.c-programming {
+    background: #3498db;
+}
+
+.machine-learning {
+    background: #2ecc71;
+}
+
+.ai-enthusiasm {
+    background: #e74c3c;
+}
+
+/* Animation Class */
+.active {
+    width: auto; /* This will be dynamically set in JavaScript */
+}

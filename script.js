@@ -37,3 +37,28 @@ contactForm.addEventListener('submit', function (e) {
         contactForm.reset();
     }
 });
+document.addEventListener('DOMContentLoaded', function () {
+    const skills = [
+        { element: document.querySelector('.python'), width: '90%' },
+        { element: document.querySelector('.c-programming'), width: '80%' },
+        { element: document.querySelector('.machine-learning'), width: '70%' },
+        { element: document.querySelector('.ai-enthusiasm'), width: '85%' }
+    ];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillFill = entry.target;
+                const skillWidth = skillFill.getAttribute('data-width');
+                skillFill.style.width = skillWidth; // Set the width to the specific value
+                skillFill.classList.add('active'); // Add active class for animation
+                observer.unobserve(skillFill); // Stop observing once the animation runs
+            }
+        });
+    });
+
+    skills.forEach(skill => {
+        skill.element.setAttribute('data-width', skill.width); // Set the data-width attribute
+        observer.observe(skill.element); // Observe each skill fill
+    });
+});
