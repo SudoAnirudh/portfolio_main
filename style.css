@@ -1,0 +1,334 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f5f5f5;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Header */
+/* Header */
+header {
+    background: rgba(0, 0, 0, 0.5); /* Make background color transparent (50% opacity) */
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 20px 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Keep other styles as is */
+
+
+header .logo {
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: #f39c12;
+}
+
+header nav {
+    float: right;
+}
+
+header nav ul {
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: all 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #f39c12;
+}
+
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* Home Section */
+#home {
+    height: 100vh;
+    background: url('https://i.ibb.co/tLcZBYw/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+#home h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+#home span {
+    color: #f39c12;
+}
+
+#home p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#home .btn {
+    display: inline-block;
+    background: #f39c12;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+#home .btn:hover {
+    background: #e67e22;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(10px);
+    }
+}
+
+/* About Section */
+#about {
+    padding: 100px 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#about h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+#about p {
+    max-width: 500px;
+    line-height: 1.8;
+}
+
+.fade-in-left {
+    animation: fadeInLeft 1s forwards;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Work Section */
+#work {
+    padding: 100px 0;
+    background: #f5f5f5;
+}
+
+#work h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.work-item {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.work-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.slide-up {
+    animation: slideUp 1s forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contact Section */
+#contact {
+    padding: 100px 0;
+    background: #333;
+    color: #fff;
+}
+
+#contact h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 50px;
+    background: #f5f5f5;
+}
+
+#contact-form textarea {
+    resize: none;
+    height: 150px;
+}
+
+#contact-form button {
+    width: 100%;
+    padding: 15px;
+    background: #f39c12;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+#contact-form button:hover {
+    background: #e67e22;
+}
+
+/* Footer with Social Links */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.social-links {
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #f39c12;
+}
+
+footer p {
+    margin-top: 10px;
+}
+/* Home Section Dynamic Text */
+.dynamic-text {
+    font-size: 24px;
+    color: #fff;
+}
+
+.rotating-text {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    animation: fadeInOut 15s infinite;
+}
+
+@keyframes fadeInOut {
+    0%, 33%, 100% {
+        opacity: 1;
+    }
+    5%, 28% {
+        opacity: 1;
+    }
+    66%, 100% {
+        opacity: 1;
+    }
+}
