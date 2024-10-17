@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const skills = [
         { element: document.querySelector('.python'), width: '90%' },
         { element: document.querySelector('.c-programming'), width: '80%' },
-        { element: document.querySelector('.machine-learning'), width: '70%' },
-        { element: document.querySelector('.ai-enthusiasm'), width: '85%' }
+        { element: document.querySelector('.java'), width: '50%' },
+        { element: document.querySelector('.tech-enthusiasm'), width: '95%' }
     ];
 
     const observer = new IntersectionObserver((entries) => {
