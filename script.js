@@ -63,3 +63,46 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    fetchGitHubProjects();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetchGitHubProjects();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetchGitHubProjects();
+});
+
+function fetchGitHubProjects() {
+    const username = 'SudoAnirudh'; // Replace with your GitHub username
+    const url = `https://api.github.com/users/${username}/repos`;
+    const selectedRepos = ['Intrusion-Detection-System-Using-ML', 'Feature-Extraction', 'Image-Enhancement-Toolkit']; // Replace with your selected repository names
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const workGrid = document.querySelector('.work-grid');
+            workGrid.innerHTML = ''; // Clear existing content
+
+            const filteredData = data.filter(repo => selectedRepos.includes(repo.name));
+
+            if (filteredData.length === 0) {
+                workGrid.innerHTML = '<p>No selected projects found.</p>';
+                return;
+            }
+
+            filteredData.forEach(repo => {
+                const projectItem = document.createElement('div');
+                projectItem.classList.add('work-item', 'slide-up');
+                projectItem.innerHTML = `
+                    <h3>${repo.name}</h3>
+                    <p>${repo.description || 'No description available'}</p>
+                    <a href="${repo.html_url}" target="_blank">View Project</a>
+                `;
+                workGrid.appendChild(projectItem);
+            });
+        })
+        .catch(error => console.error('Error fetching GitHub projects:', error));
+}
