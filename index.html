@@ -9,20 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1 class="logo">My Portfolio</h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    
+    <!-- Removed header area -->
 
     <section id="home">
         <div class="intro">
@@ -34,7 +21,6 @@
         </div>
         <div class="scroll-down"></div>
     </section>
-    
 
     <section id="about">
         <div class="container">
@@ -44,42 +30,40 @@
                 <img src="https://i.postimg.cc/yNCM83Ms/photo-2024-10-10-12-26-07.jpg" alt="Your Photo" class="fade-in-left">
             </div>
         </div>
-    </section>\
+    </section>
 
     <!-- Skills Section -->
-<!-- Skills Section -->
-<!-- Skills Section -->
-<section id="skills">
-    <div class="container">
-        <h2>My Skills</h2>
-        <div class="skill">
-            <h3>Python</h3>
-            <div class="skill-bar">
-                <div class="skill-fill python"></div>
+    <section id="skills">
+        <div class="container">
+            <h2>My Skills</h2>
+            <div class="skill">
+                <h3>Python</h3>
+                <div class="skill-bar">
+                    <div class="skill-fill python"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>C Programming</h3>
+                <div class="skill-bar">
+                    <div class="skill-fill c-programming"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>Java</h3>
+                <div class="skill-bar">
+                    <div class="skill-fill java"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>Tech Enthusiasm</h3>
+                <div class="skill-bar">
+                    <div class="skill-fill tech-enthusiasm"></div>
+                </div>
             </div>
         </div>
-        <div class="skill">
-            <h3>C Programming</h3>
-            <div class="skill-bar">
-                <div class="skill-fill c-programming"></div>
-            </div>
-        </div>
-        <div class="skill">
-            <h3>Java</h3>
-            <div class="skill-bar">
-                <div class="skill-fill java"></div>
-            </div>
-        </div>
-        <div class="skill">
-            <h3>Tech Enthusiasm</h3>
-            <div class="skill-bar">
-                <div class="skill-fill tech-enthusiasm"></div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="work">
+    <section id="work">
         <div class="container">
             <h2>My Work</h2>
             <div class="work-grid">
@@ -100,24 +84,23 @@
     </section>
 
     <!-- Contact Section -->
-<section id="contact">
-    <div class="container">
-        <h2>Contact Me</h2>
-        <form id="contact-form" action="send_email.php" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form id="contact-form" action="send_email.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
 
-            <button type="submit">Send</button>
-        </form>
-    </div>
-</section>
-
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
 
     <footer>
         <div class="social-links">
@@ -130,5 +113,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="scripts.js"></script> <!-- Ensure this line is correct -->
 </body>
 </html>

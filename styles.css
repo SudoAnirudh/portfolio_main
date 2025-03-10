@@ -1,0 +1,81 @@
+/* ...existing code... */
+
+/* Removed header styles */
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .intro {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .intro h2 {
+        font-size: 24px;
+    }
+
+    .intro p {
+        font-size: 16px;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    .portfolio-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center; /* Center align text */
+        padding: 20px; /* Add padding for better spacing */
+    }
+
+    .about-content p {
+        font-size: 16px; /* Adjust font size for readability */
+        margin-bottom: 20px; /* Add margin for spacing */
+    }
+
+    .about-content img {
+        width: 100%;
+        max-width: 300px;
+        margin-top: 20px;
+        border-radius: 10px; /* Add border radius for better aesthetics */
+    }
+
+    .skill {
+        margin-bottom: 20px;
+    }
+
+    .work-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .work-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 10px;
+    }
+}
+
+/* ...existing code... */
