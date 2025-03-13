@@ -177,3 +177,134 @@ document.addEventListener('DOMContentLoaded', function() {
     observeSkills();
     fetchGitHubProjects();
 });
+
+// About Section Animations
+function animateStats() {
+    const stats = document.querySelectorAll('.stat-number');
+    
+    stats.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-count'));
+        let current = 0;
+        const increment = target / 50; // Will complete in 50 steps
+        
+        const updateCount = () => {
+            if (current < target) {
+                current += increment;
+                stat.textContent = Math.round(current);
+                requestAnimationFrame(updateCount);
+            } else {
+                stat.textContent = target;
+            }
+        };
+        
+        updateCount();
+    });
+}
+
+// Intersection Observer for About Cards
+const observeAbout = () => {
+    const cards = document.querySelectorAll('.about-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateX(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    cards.forEach(card => observer.observe(card));
+};
+
+// Tech Stack Hover Effect
+const techItems = document.querySelectorAll('.tech-item');
+techItems.forEach(item => {
+    item.addEventListener('mouseover', () => {
+        item.style.transform = 'scale(1.1) translateY(-5px)';
+    });
+    
+    item.addEventListener('mouseout', () => {
+        item.style.transform = 'scale(1) translateY(0)';
+    });
+});
+
+// Initialize About section animations
+document.addEventListener('DOMContentLoaded', function() {
+    // ... existing DOMContentLoaded code ...
+    
+    observeAbout();
+    
+    // Animate stats when about section is in view
+    const aboutSection = document.querySelector('#about');
+    const aboutObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            animateStats();
+            aboutObserver.unobserve(aboutSection);
+        }
+    }, { threshold: 0.5 });
+    
+    aboutObserver.observe(aboutSection);
+});
+
+// Timeline Animations
+const observeTimeline = () => {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                const content = entry.target.querySelector('.timeline-content');
+                content.style.transform = 'rotateY(0deg)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    timelineItems.forEach(item => {
+        item.style.opacity = '0';
+        observer.observe(item);
+    });
+};
+
+// Timeline Parallax Effect
+const handleTimelineParallax = () => {
+    const timeline = document.querySelector('.timeline');
+    if (!timeline) return;
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        timelineItems.forEach((item, index) => {
+            const speed = index % 2 === 0 ? 0.15 : -0.15;
+            const yPos = -(scrolled * speed);
+            item.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+};
+
+// Timeline Tag Hover Effects
+const initTimelineTags = () => {
+    const tags = document.querySelectorAll('.timeline-tag');
+    
+    tags.forEach(tag => {
+        tag.addEventListener('mouseover', () => {
+            tag.style.transform = 'scale(1.1) translateY(-5px)';
+        });
+        
+        tag.addEventListener('mouseout', () => {
+            tag.style.transform = 'scale(1) translateY(0)';
+        });
+    });
+};
+
+// Initialize timeline features when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // ... existing DOMContentLoaded code ...
+    
+    observeTimeline();
+    handleTimelineParallax();
+    initTimelineTags();
+});
