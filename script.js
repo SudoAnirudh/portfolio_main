@@ -10,13 +10,15 @@ const phrases = [
 let currentPhrase = 0;
 
 function rotateText() {
-    rotatingText.textContent = phrases[currentPhrase];
-    currentPhrase = (currentPhrase + 1) % phrases.length; // Loop through the phrases
+    rotatingText.style.opacity = '0';
+    setTimeout(() => {
+        rotatingText.textContent = phrases[currentPhrase];
+        rotatingText.style.opacity = '1';
+        currentPhrase = (currentPhrase + 1) % phrases.length;
+    }, 500);
 }
 
-setInterval(rotateText, 3000); // Change text every 3 seconds
-
-// Initial call to set the first phrase
+setInterval(rotateText, 3000);
 rotateText();
 
 // Simple Contact Form Validation
@@ -37,29 +39,92 @@ contactForm.addEventListener('submit', function (e) {
         contactForm.reset();
     }
 });
-document.addEventListener('DOMContentLoaded', function () {
-    const skills = [
-        { element: document.querySelector('.python'), width: '90%' },
-        { element: document.querySelector('.c-programming'), width: '80%' },
-        { element: document.querySelector('.java'), width: '50%' },
-        { element: document.querySelector('.tech-enthusiasm'), width: '95%' }
-    ];
 
+// Particle.js Configuration
+document.addEventListener('DOMContentLoaded', function() {
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: '#ffffff' },
+            shape: { type: 'circle' },
+            opacity: {
+                value: 0.5,
+                random: false,
+                animation: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+            },
+            size: {
+                value: 3,
+                random: true,
+                animation: { enable: true, speed: 2, size_min: 0.1, sync: false }
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#ffffff',
+                opacity: 0.4,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: 'none',
+                random: false,
+                straight: false,
+                out_mode: 'out',
+                bounce: false,
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: { enable: true, mode: 'repulse' },
+                onclick: { enable: true, mode: 'push' },
+                resize: true
+            }
+        },
+        retina_detect: true
+    });
+});
+
+// Enhanced Skill Animations
+const observeSkills = () => {
+    const skillFills = document.querySelectorAll('.skill-fill');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const skillFill = entry.target;
-                const skillWidth = skillFill.getAttribute('data-width');
-                skillFill.style.width = skillWidth; // Set the width to the specific value
-                skillFill.classList.add('active'); // Add active class for animation
-                observer.unobserve(skillFill); // Stop observing once the animation runs
+                const fill = entry.target;
+                const width = fill.getAttribute('data-width');
+                fill.style.width = width;
+                observer.unobserve(fill);
+                
+                // Animate the percentage counter
+                const card = fill.closest('.skill-card');
+                const percentage = card.querySelector('.skill-percentage');
+                const targetValue = parseInt(width);
+                let currentValue = 0;
+                
+                const counter = setInterval(() => {
+                    if (currentValue >= targetValue) {
+                        clearInterval(counter);
+                    } else {
+                        currentValue += 1;
+                        percentage.textContent = `${currentValue}%`;
+                    }
+                }, 20);
             }
         });
-    });
+    }, { threshold: 0.5 });
 
-    skills.forEach(skill => {
-        skill.element.setAttribute('data-width', skill.width); // Set the data-width attribute
-        observer.observe(skill.element); // Observe each skill fill
+    skillFills.forEach(fill => observer.observe(fill));
+};
+
+// Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
 });
 
@@ -106,3 +171,9 @@ function fetchGitHubProjects() {
         })
         .catch(error => console.error('Error fetching GitHub projects:', error));
 }
+
+// Initialize all animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    observeSkills();
+    fetchGitHubProjects();
+});

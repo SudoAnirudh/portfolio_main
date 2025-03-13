@@ -20,9 +20,11 @@ body {
 }
 
 /* Header */
-/* Header */
 header {
-    background: rgba(0, 0, 0, 0.5); /* Make background color transparent (50% opacity) */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
     position: fixed;
     width: 100%;
@@ -30,11 +32,12 @@ header {
     left: 0;
     padding: 20px 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-/* Keep other styles as is */
-
+header:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
 
 header .logo {
     float: left;
@@ -76,13 +79,41 @@ header::after {
 /* Home Section */
 #home {
     height: 100vh;
-    background: url('https://i.ibb.co/tLcZBYw/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products.jpg') no-repeat center center/cover;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
+                url('https://i.ibb.co/tLcZBYw/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products.jpg') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: #fff;
     position: relative;
+    overflow: hidden;
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.intro {
+    position: relative;
+    z-index: 2;
+    transform: translateY(0);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
 }
 
 #home h2 {
@@ -349,43 +380,73 @@ footer p {
         opacity: 1;
     }
 }
-/* Skills Section *
 /* Skills Section */
 #skills {
-    padding: 50px 0;
-    background: #fff;
+    padding: 80px 0;
+    background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
 }
 
-#skills h2 {
-    text-align: center;
-    margin-bottom: 20px;
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 20px;
 }
 
-.skill {
-    margin-bottom: 20px;
+.skill-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--skill-color);
 }
 
 .skill h3 {
-    font-size: 20px;
-    margin-bottom: 5px;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333;
 }
 
 .skill-bar {
-    background: #e0e0e0;
-    border-radius: 5px;
-    height: 20px; /* Height of the skill bar */
-    width: 100%; /* Full width */
-    overflow: hidden; /* Ensures no overflow of the filled area */
-    position: relative; /* Positioning for animation */
+    background: #f0f0f0;
+    border-radius: 10px;
+    height: 10px;
+    overflow: hidden;
+    position: relative;
 }
 
 .skill-fill {
     height: 100%;
-    border-radius: 5px;
-    width: 0; /* Start with width 0 for animation */
-    position: absolute; /* Position it absolutely */
-    left: 0; /* Align to the left */
-    transition: width 1s ease; /* Smooth transition */
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 1.5s cubic-bezier(0.1, 0.5, 0.5, 1);
+}
+
+.skill-percentage {
+    position: absolute;
+    right: 0;
+    top: -25px;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 /* Skill Levels - these are now just for background colors */
