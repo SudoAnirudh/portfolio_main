@@ -579,24 +579,29 @@ header::after {
 
 .work-item img {
     width: 100%;
-    height: 100%;
+    height: 100%; /* Restored */
     object-fit: cover;
     transition: transform 0.4s ease;
+    /* display: block; Removed, not strictly necessary if parent is not inline */
 }
 
 .work-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: absolute; /* Restored */
+    bottom: 0; /* Restored */
+    left: 0; /* Restored */
     width: 100%;
     padding: 20px;
-    background: rgba(19, 17, 28, 0.9);
-    transform: translateY(100%);
-    transition: transform 0.4s ease;
-    z-index: 2;
+    background: rgba(19, 17, 28, 0.9); /* Keep background */
+    transform: translateY(100%); /* Restored */
+    transition: transform 0.4s ease; /* Restored */
+    z-index: 2; /* Keep z-index */
+    /* display: flex; Removed */
+    /* flex-direction: column; Removed */
+    /* justify-content: space-between; Removed */
+    /* flex-grow: 1; Removed */
 }
 
-.work-item:hover .work-content {
+.work-item:hover .work-content { /* Restored hover effect for content visibility */
     transform: translateY(0);
 }
 
@@ -617,10 +622,20 @@ header::after {
     text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
 }
 
-.work-description {
+.work-content .work-title,
+.work-content h4 { /* Target h4 as well */
+    color: var(--primary);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+}
+
+.work-description,
+.work-content p { /* Target p as well */
     color: var(--text-bright);
     font-size: 0.9em;
     margin-bottom: 15px;
+    /* flex-grow: 1; Removed, not needed for hover layout */
 }
 
 .work-tags {
@@ -630,7 +645,8 @@ header::after {
     margin-bottom: 15px;
 }
 
-.work-tag {
+.work-tag,
+.work-tags .tag { /* Target .tag as well */
     padding: 4px 12px;
     background: rgba(255, 0, 255, 0.1);
     border: 1px solid rgba(255, 0, 255, 0.3);
@@ -642,7 +658,8 @@ header::after {
     overflow: hidden;
 }
 
-.work-tag::before {
+.work-tag::before,
+.work-tags .tag::before { /* Target .tag as well */
     content: '';
     position: absolute;
     top: 0;
@@ -655,16 +672,18 @@ header::after {
     z-index: -1;
 }
 
-.work-tag:hover::before {
+.work-tag:hover::before,
+.work-tags .tag:hover::before { /* Target .tag as well */
     opacity: 0.2;
 }
 
-.work-link {
-    display: flex;
-    gap: 15px;
+.work-links { /* Ensure parent container for links exists */
+    display: flex; /* Added to control layout of links if multiple */
+    gap: 15px; /* Added from old .work-link (plural) */
 }
 
-.work-link {
+.work-link, /* Keep existing styling for .work-link */
+.work-links .btn-link { /* Target .btn-link as well */
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -674,13 +693,22 @@ header::after {
     transition: all 0.3s ease;
 }
 
-.work-link:hover {
+.work-link:hover,
+.work-links .btn-link:hover { /* Target .btn-link as well */
     color: var(--primary);
     transform: translateX(5px);
 }
 
-.work-link i {
+.work-link i,
+.work-links .btn-link i { /* Target .btn-link as well */
     font-size: 1.2em;
+}
+
+/* Ensure work-item itself can flex its content if needed */
+.work-item {
+    /* display: flex; Removed */
+    /* flex-direction: column; Removed */
+    /* Other .work-item styles like position: relative, background, border, overflow, aspect-ratio etc. are kept */
 }
 
 /* Work Item Hover Animation */
