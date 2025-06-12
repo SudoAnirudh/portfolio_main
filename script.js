@@ -4,7 +4,7 @@ const phrases = [
     "AI & ML Engineering Student",
     "Python & C Programmer",
     "AI Enthusiast",
-    "Passionate About Emerging Tech and Innovation"
+    "Passionate About AI-driven Innovation"
 ];
 
 let currentPhrase = 0;
@@ -128,18 +128,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    fetchGitHubProjects();
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    fetchGitHubProjects();
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    fetchGitHubProjects();
-});
-
 function fetchGitHubProjects() {
     const username = 'SudoAnirudh'; // Replace with your GitHub username
     const url = `https://api.github.com/users/${username}/repos`;
@@ -160,11 +148,29 @@ function fetchGitHubProjects() {
 
             filteredData.forEach(repo => {
                 const projectItem = document.createElement('div');
-                projectItem.classList.add('work-item', 'slide-up');
+                projectItem.classList.add('work-item', 'slide-up'); // Existing classes for animation
+
+                // Sanitize description to prevent XSS if it were user-generated, though GitHub API content is generally safe.
+                const description = repo.description ? repo.description.replace(/</g, "&lt;").replace(/>/g, "&gt;") : 'No description available';
+                const languageTag = repo.language ? `<span class="tag">${repo.language}</span>` : '';
+
                 projectItem.innerHTML = `
-                    <h3>${repo.name}</h3>
-                    <p>${repo.description || 'No description available'}</p>
-                    <a href="${repo.html_url}" target="_blank">View Project</a>
+                    <div class="work-content">
+                        <div class="work-info">
+                            <h4>${repo.name}</h4>
+                            <p>${description}</p>
+                            <div class="work-tags">
+                                ${languageTag}
+                            </div>
+                        </div>
+                        <div class="work-details">
+                            <div class="work-links">
+                                <a href="${repo.html_url}" target="_blank" class="btn-link">
+                                    <i class="fas fa-external-link-alt"></i> View on GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 `;
                 workGrid.appendChild(projectItem);
             });
@@ -176,6 +182,22 @@ function fetchGitHubProjects() {
 document.addEventListener('DOMContentLoaded', function() {
     observeSkills();
     fetchGitHubProjects();
+    observeAbout(); // Consolidating from other DOMContentLoaded listeners
+    observeTimeline();
+    handleTimelineParallax();
+    initTimelineTags();
+
+    // Animate stats when about section is in view
+    const aboutSection = document.querySelector('#about');
+    if (aboutSection) { // Check if aboutSection exists before observing
+        const aboutObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateStats();
+                aboutObserver.unobserve(aboutSection);
+            }
+        }, { threshold: 0.5 });
+        aboutObserver.observe(aboutSection);
+    }
 });
 
 // About Section Animations
@@ -227,24 +249,6 @@ techItems.forEach(item => {
     item.addEventListener('mouseout', () => {
         item.style.transform = 'scale(1) translateY(0)';
     });
-});
-
-// Initialize About section animations
-document.addEventListener('DOMContentLoaded', function() {
-    // ... existing DOMContentLoaded code ...
-    
-    observeAbout();
-    
-    // Animate stats when about section is in view
-    const aboutSection = document.querySelector('#about');
-    const aboutObserver = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            animateStats();
-            aboutObserver.unobserve(aboutSection);
-        }
-    }, { threshold: 0.5 });
-    
-    aboutObserver.observe(aboutSection);
 });
 
 // Timeline Animations
@@ -299,12 +303,3 @@ const initTimelineTags = () => {
         });
     });
 };
-
-// Initialize timeline features when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // ... existing DOMContentLoaded code ...
-    
-    observeTimeline();
-    handleTimelineParallax();
-    initTimelineTags();
-});
