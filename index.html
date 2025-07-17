@@ -1,423 +1,696 @@
-<!-- Futuristic Portfolio Structure -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anirudh S-Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron:700|Poppins:400,600,700|Montserrat:400,600&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <title>Anirudh S - AI & ML Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(90deg, #181c24 60%, #232946 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            color: #34495e;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            background: rgba(52, 73, 94, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(52, 73, 94, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border: 2px solid #3498db;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            text-align: center;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .education-item, .experience-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(52, 73, 94, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .education-title, .experience-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details, .experience-details {
+            color: #7f8c8d;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: rgba(52, 73, 94, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: rgba(52, 73, 94, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #f39c12;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-tech {
+            color: #f39c12;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-item {
+            background: rgba(52, 73, 94, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #27ae60;
+            text-align: center;
+        }
+
+        .cert-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-issuer {
+            color: #27ae60;
+            font-weight: 500;
+        }
+
+        .achievements-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .achievement-item {
+            background: rgba(52, 73, 94, 0.05);
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            border: 2px solid #9b59b6;
+            color: #9b59b6;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            background: #9b59b6;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .card {
+                padding: 2rem;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 1000;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Theme Toggle */
+        #themeToggle {
+            position: fixed; top: 1rem; right: 1rem;
+            background: none; border: none; font-size: 1.5rem; cursor: pointer;
+            color: #6366f1; transition: color 0.2s;
+        }
+        #themeToggle:hover { color: #10b981; }
+
+        /* Skill Bar */
+        .skill-bar { margin-bottom: 1rem; }
+        .skill-bar span { font-weight: 600; }
+        .bar-bg {
+            background: #e5e7eb; border-radius: 8px; height: 8px; width: 100%; margin-top: 0.3rem;
+        }
+        .bar-fill {
+            background: linear-gradient(90deg, #6366f1, #10b981);
+            height: 100%; border-radius: 8px;
+            transition: width 1s cubic-bezier(.4,2,.6,1);
+        }
+
+        /* Project Card Hover Reveal */
+        .project-card { position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 2px 12px #0002; }
+        .project-front, .project-back { padding: 1.2rem; transition: transform 0.4s; }
+        .project-back { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #fff; color: #181c24; transform: translateY(100%); }
+        .project-card:hover .project-back { transform: translateY(0); }
+        .project-card:hover .project-front { transform: translateY(-100%); }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed; bottom: 2rem; right: 2rem;
+            background: #6366f1; color: #fff; border: none; border-radius: 50%;
+            width: 40px; height: 40px; font-size: 1.5rem; display: none; align-items: center; justify-content: center;
+            box-shadow: 0 2px 8px #6366f1aa; cursor: pointer; z-index: 1000;
+        }
+        #backToTop.show { display: flex; }
+
+        .glass-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(12px);
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1 class="logo">My Portfolio</h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#work">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
 
-    <section id="home">
-        <div id="particles-js"></div>
-        <div class="intro">
-            <h2 class="fade-in">Hi, I'm <span class="highlight">Anirudh S</span></h2>
-            <p class="dynamic-text">
-                <span class="rotating-text">AI & ML Engineering Student | Futurist | Developer</span>
-            </p>
-            <div class="cta-buttons">
-                <a href="#work" class="btn pulse">View My Work</a>
-                <a href="#contact" class="btn btn-outline">Contact Me</a>
-            </div>
-        </div>
-        <div class="scroll-down"></div>
-    </section>
-
-    <section id="about">
-        <div class="container">
-            <div class="about-title">
-                <h2>About Me</h2>
-                <p>Innovating at the Intersection of AI & Technology</p>
-            </div>
-            <div class="about-cards-container">
-                <!-- Profile Card -->
-                <div class="about-card profile-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <div class="profile-image">
-                                <img src="https://i.postimg.cc/yNCM83Ms/photo-2024-10-10-12-26-07.jpg" alt="Anirudh S">
-                            </div>
-                            <h3>Anirudh S</h3>
-                            <p class="title">AI & ML Engineering Student</p>
-                            <div class="quick-info">
-                                <span><i class="fas fa-map-marker-alt"></i> Kerala, India</span>
-                                <span><i class="fas fa-graduation-cap"></i> B.E. AI & ML</span>
-                            </div>
-                        </div>
-                        <div class="card-back">
-                            <h3>Background</h3>
-                            <p>Passionate AI & ML engineering student with a strong foundation in Python and C programming. Currently pursuing B.E. at Srinivas Institute of Technology with 7.2 CGPA.</p>
-                            <div class="social-links-mini">
-                                <a href="https://github.com/SudoAnirudh" target="_blank"><i class="fab fa-github"></i></a>
-                                <a href="https://www.linkedin.com/in/sudoanirudh/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                <a href="mailto:anirudhsudheer@gmail.com"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1 class="name">Anirudh S</h1>
+                <p class="subtitle">AI & ML Engineering Student</p>
+                <div class="contact-info">
+                    <a href="mailto:anirudhsudheer@gmail.com" class="contact-item">anirudhsudheer@gmail.com</a>
+                    <a href="tel:+919539102851" class="contact-item">+91 95391 02851</a>
+                    <span class="contact-item">Kozhikode, Kerala, India</span>
+                </div>
+                <div class="social-links">
+                    <a href="https://sudoanirudh.github.io/portfolio/" class="social-link" target="_blank">Portfolio</a>
+                    <a href="https://github.com/SudoAnirudh" class="social-link" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/sudoanirudh/" class="social-link" target="_blank">LinkedIn</a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="skills">
-        <div class="container">
-            <h2>Skills</h2>
-            <div class="about-cards-container">
-                <!-- Skills Card -->
-                <div class="about-card skills-card">
-                    <h3><i class="fas fa-code"></i> Technical Skills</h3>
-                    <div class="skills-group">
-                        <h4>Programming Languages</h4>
-                        <div class="skills-cloud">
-                            <div class="skill-tag">Python</div>
-                            <div class="skill-tag">C Language</div>
-                            <div class="skill-tag">Java</div>
-                            <div class="skill-tag">Dart</div>
-                            <div class="skill-tag">PHP</div>
-                        </div>
-                        <h4>Libraries / Frameworks</h4>
-                        <div class="skills-cloud">
-                            <div class="skill-tag">Django</div>
-                            <div class="skill-tag">NumPy</div>
-                            <div class="skill-tag">Pandas</div>
-                            <div class="skill-tag">Matplotlib</div>
-                            <div class="skill-tag">Seaborn</div>
-                            <div class="skill-tag">Flask</div>
-                            <div class="skill-tag">scikit-learn</div>
-                            <div class="skill-tag">Flutter</div>
-                        </div>
-                        <h4>Tools / Platforms</h4>
-                        <div class="skills-cloud">
-                            <div class="skill-tag">Git</div>
-                            <div class="skill-tag">VS Code</div>
-                            <div class="skill-tag">Excel</div>
-                            <div class="skill-tag">Power BI</div>
-                            <div class="skill-tag">Tableau</div>
-                            <div class="skill-tag">Jupyter Notebook</div>
-                            <div class="skill-tag">Anaconda</div>
-                        </div>
-                        <h4>Databases</h4>
-                        <div class="skills-cloud">
-                            <div class="skill-tag">SQL</div>
-                            <div class="skill-tag">MongoDB</div>
-                        </div>
-                    </div>
+        <div class="card">
+            <div class="section">
+                <h2 class="section-title">Summary</h2>
+                <p class="summary">
+                    I'm a dedicated AI & ML engineering student with a strong foundation in Python and C programming. My passion for AI and its potential to shape the future drives me to continuously explore emerging technologies and innovate. I'm eager to apply my skills and knowledge to solve real-world problems and contribute to the advancement of artificial intelligence.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <div class="education-title">B.E Artificial Intelligence And Machine Learning</div>
+                    <div class="education-details">Srinivas Institute Of Technology, Mangalore | September 2022 - 2026</div>
+                    <div class="education-details"><strong>CGPA:</strong> 7.26</div>
+                </div>
+                <div class="education-item">
+                    <div class="education-title">Bio Science Pre-University</div>
+                    <div class="education-details">Nhss Vakayad, Kozhikode | June 2020 - March 2022</div>
+                    <div class="education-details"><strong>Percentage:</strong> 85%</div>
+                </div>
+                <div class="education-item">
+                    <div class="education-title">Secondary School</div>
+                    <div class="education-details">Ghss Naduvannur, Kozhikode | June 2019 - March 2020</div>
+                    <div class="education-details"><strong>Percentage:</strong> 95%</div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="experience">
-        <div class="container">
-            <h2>Experience</h2>
-            <div class="about-cards-container">
-                <!-- Experience Card -->
-                <div class="about-card experience-card">
-                    <h3><i class="fas fa-briefcase"></i> Experience</h3>
-                    <div class="experience-timeline">
-                        <div class="exp-item">
-                            <div class="exp-date">Apr 2025 - Jun 2025</div>
-                            <div class="exp-content">
-                                <h4>Zero Trust Cloud Security Virtual Intern</h4>
-                                <p>EduSkills Foundations<br><small>Supported By Zscaler</small></p>
-                            </div>
+        <div class="card">
+            <div class="section">
+                <h2 class="section-title">Experience</h2>
+                <div class="experience-item">
+                    <div class="experience-title">Data Science Master Virtual Intern</div>
+                    <div class="experience-details">EduSkills Foundations | January 2025 - March 2025</div>
+                    <div class="experience-details">Supported By ALTAIR</div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-title">Zero Trust Cloud Security Virtual Intern</div>
+                    <div class="experience-details">EduSkills Foundations | April 2025 - June 2025</div>
+                    <div class="experience-details">Supported By Zscaler</div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-title">AI Intern</div>
+                    <div class="experience-details">Codec Technologies | April 2025 - May 2025</div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-title">Android Developer Virtual Intern</div>
+                    <div class="experience-details">Eduskills Foundations | October 2024 - December 2024</div>
+                    <div class="experience-details">Supported By Google Cloud</div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-title">Gen AI Virtual Intern</div>
+                    <div class="experience-details">EduSkills Foundations | July 2024 - September 2024</div>
+                    <div class="experience-details">Supported By Google Cloud</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C Language</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Dart</span>
+                            <span class="skill-tag">PHP</span>
                         </div>
-                        <div class="exp-item">
-                            <div class="exp-date">Apr 2025 - May 2025</div>
-                            <div class="exp-content">
-                                <h4>AI Intern</h4>
-                                <p>Codec Technologies</p>
-                            </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Libraries/Frameworks</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Seaborn</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">scikit-learn</span>
+                            <span class="skill-tag">Flutter</span>
                         </div>
-                        <div class="exp-item">
-                            <div class="exp-date">Jan 2025 - Mar 2025</div>
-                            <div class="exp-content">
-                                <h4>Data Science Master Virtual Intern</h4>
-                                <p>EduSkills Foundations<br><small>Supported By ALTAIR</small></p>
-                            </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools / Platforms</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Excel</span>
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">Tableau</span>
+                            <span class="skill-tag">Jupyter Notebook</span>
+                            <span class="skill-tag">Anaconda</span>
                         </div>
-                        <div class="exp-item">
-                            <div class="exp-date">Oct 2024 - Dec 2024</div>
-                            <div class="exp-content">
-                                <h4>Android Developer Virtual Intern</h4>
-                                <p>EduSkills Foundations<br><small>Supported By Google Cloud</small></p>
-                            </div>
-                        </div>
-                        <div class="exp-item">
-                            <div class="exp-date">Jul 2024 - Sep 2024</div>
-                            <div class="exp-content">
-                                <h4>Gen AI Virtual Intern</h4>
-                                <p>EduSkills Foundations<br><small>Supported By Google Cloud</small></p>
-                            </div>
-                        </div>
-                        <div class="exp-item">
-                            <div class="exp-date">Apr 2019 - Jun 2024</div>
-                            <div class="exp-content">
-                                <h4>Cybersecurity Virtual Intern</h4>
-                                <p>EduSkills Foundations<br><small>Supported By Paloalto</small></p>
-                            </div>
-                        </div>
-                        <div class="exp-item">
-                            <div class="exp-date">Jan 2024 - Mar 2024</div>
-                            <div class="exp-content">
-                                <h4>AI-ML Virtual Intern</h4>
-                                <p>EduSkills Foundations<br><small>Supported By Google For Developers</small></p>
-                            </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Databases</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">MongoDB</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="certifications">
-        <div class="container">
-            <h2>Certifications</h2>
-            <div class="about-cards-container">
-                <!-- Certifications Card -->
-                <div class="about-card certs-card">
-                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
-                    <div class="cert-list">
-                        <div class="cert-item">
-                            <div class="cert-icon"><i class="fas fa-award"></i></div>
-                            <div class="cert-info">
-                                <h4>Artificial Intelligence</h4>
-                                <p>Certiport, Pearson</p>
-                            </div>
+        <div class="card">
+            <div class="section">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-title">BlinkDetection</div>
+                        <div class="project-tech">Python, Computer Vision</div>
+                        <div class="project-description">
+                            A Python project that detects blinks in real-time video using OpenCV and facial landmarks, providing live visual feedback and a blink counter.
                         </div>
-                        <div class="cert-item">
-                            <div class="cert-icon"><i class="fas fa-robot"></i></div>
-                            <div class="cert-info">
-                                <h4>Generative AI</h4>
-                                <p>Google Cloud</p>
-                            </div>
+                        <a href="https://github.com/SudoAnirudh/BlinkDetection" class="project-link" target="_blank">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Age Gender Detection</div>
+                        <div class="project-tech">Python, Computer Vision</div>
+                        <div class="project-description">
+                            This project uses deep learning to classify age and gender from images, leveraging CNNs and OpenCV for accuracy.
                         </div>
-                        <div class="cert-item">
-                            <div class="cert-icon"><i class="fas fa-brain"></i></div>
-                            <div class="cert-info">
-                                <h4>Machine Learning</h4>
-                                <p>Coursera</p>
-                            </div>
+                        <a href="https://github.com/SudoAnirudh/Age_Gender_Detection" class="project-link" target="_blank">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Customer Churn Prediction</div>
+                        <div class="project-tech">Jupyter Notebook</div>
+                        <div class="project-description">
+                            Uses machine learning to predict which customers are likely to leave a company, helping businesses take action to retain them.
                         </div>
+                        <a href="https://github.com/SudoAnirudh/Customer_Churn_Prediction" class="project-link" target="_blank">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Stock Price Predictor</div>
+                        <div class="project-tech">Python</div>
+                        <div class="project-description">
+                            Predicts stock prices using machine learning models like Random Forest and LSTM. Features a Streamlit web app for interactive stock analysis.
+                        </div>
+                        <a href="https://github.com/SudoAnirudh/Stock_Price_Predictor" class="project-link" target="_blank">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Intrusion Detection System</div>
+                        <div class="project-tech">Python, HTML, CSS</div>
+                        <div class="project-description">
+                            Uses machine learning with scikit-learn to detect network intrusions, featuring a Flask-based web interface for easy monitoring.
+                        </div>
+                        <a href="https://github.com/SudoAnirudh/Intrusion-Detection-System-Using-ML" class="project-link" target="_blank">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Dolphin MCP (Open Source)</div>
+                        <div class="project-tech">Python</div>
+                        <div class="project-description">
+                            A Python library and CLI tool for querying MCP servers through natural language, connecting to language models for conversational data access.
+                        </div>
+                        <a href="https://github.com/SudoAnirudh/dolphin-mcp" class="project-link" target="_blank">View Project</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="education">
-        <div class="container">
-            <h2>Education</h2>
-            <div class="about-cards-container">
-                <!-- Education Card -->
-                <div class="about-card education-card">
-                    <h3><i class="fas fa-university"></i> Education</h3>
-                    <div class="education-timeline">
-                        <div class="edu-item">
-                            <div class="edu-year">2022-2026</div>
-                            <div class="edu-content">
-                                <h4>B.E. in AI & Machine Learning</h4>
-                                <p>Srinivas Institute of Technology</p>
-                                <span class="edu-score">CGPA: 7.2</span>
-                            </div>
-                        </div>
-                        <div class="edu-item">
-                            <div class="edu-year">2020-2022</div>
-                            <div class="edu-content">
-                                <h4>Secondary School</h4>
-                                <p>Nhss Vakayad</p>
-                                <span class="edu-score">85%</span>
-                            </div>
-                        </div>
+        <div class="card">
+            <div class="section">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certifications-grid">
+                    <div class="cert-item">
+                        <div class="cert-title">Introduction to Generative AI</div>
+                        <div class="cert-issuer">Google Cloud</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-title">Machine Learning for All</div>
+                        <div class="cert-issuer">Coursera</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-title">Artificial Intelligence</div>
+                        <div class="cert-issuer">Certiport, Pearson</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-title">Fundamentals of Cybersecurity</div>
+                        <div class="cert-issuer">Zscaler Training</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-title">Machine Learning Foundation</div>
+                        <div class="cert-issuer">Infosys SpringBoard</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-title">Principles Of Generative AI</div>
+                        <div class="cert-issuer">Infosys SpringBoard</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="work">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="work-grid">
-                <!-- Project: BlinkDetection -->
-                <div class="work-item featured expanded" data-category="cv">
-                    <div class="work-content">
-                        <div class="work-info">
-                            <h3 class="work-title">BlinkDetection</h3>
-                            <p class="work-description">A Python project that detects blinks in real-time video using OpenCV and facial landmarks, providing live visual feedback and a blink counter.</p>
-                            <div class="work-tags">
-                                <span class="work-tag">Python</span>
-                                <span class="work-tag">Computer Vision</span>
-                            </div>
-                        </div>
-                        <div class="work-links">
-                            <a href="https://github.com/SudoAnirudh/BlinkDetection" class="work-link" target="_blank">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project: Age_Gender_Detection -->
-                <div class="work-item featured expanded" data-category="cv">
-                    <div class="work-content">
-                        <div class="work-info">
-                            <h3 class="work-title">Age_Gender_Detection</h3>
-                            <p class="work-description">Deep learning project to classify age and gender from images, leveraging CNNs and OpenCV for accuracy.</p>
-                            <div class="work-tags">
-                                <span class="work-tag">Python</span>
-                                <span class="work-tag">Computer Vision</span>
-                            </div>
-                        </div>
-                        <div class="work-links">
-                            <a href="https://github.com/SudoAnirudh/Age_Gender_Detection" class="work-link" target="_blank">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project: Customer_Churn_Prediction -->
-                <div class="work-item featured expanded" data-category="ml">
-                    <div class="work-content">
-                        <div class="work-info">
-                            <h3 class="work-title">Customer_Churn_Prediction</h3>
-                            <p class="work-description">Machine learning project to predict which customers are likely to leave a company, helping businesses take action to retain them.</p>
-                            <div class="work-tags">
-                                <span class="work-tag">Jupyter Notebook</span>
-                            </div>
-                        </div>
-                        <div class="work-links">
-                            <a href="https://github.com/SudoAnirudh/Customer_Churn_Prediction" class="work-link" target="_blank">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project: Stock_Price_Predictor -->
-                <div class="work-item featured expanded" data-category="ml">
-                    <div class="work-content">
-                        <div class="work-info">
-                            <h3 class="work-title">Stock_Price_Predictor</h3>
-                            <p class="work-description">Predicts stock prices using machine learning models like Random Forest and LSTM. Features a Streamlit web app for interactive stock selection and forecasting.</p>
-                            <div class="work-tags">
-                                <span class="work-tag">Python</span>
-                            </div>
-                        </div>
-                        <div class="work-links">
-                            <a href="https://github.com/SudoAnirudh/Stock_Price_Predictor" class="work-link" target="_blank">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project: Image-Enhancement-Toolkit -->
-                <div class="work-item featured expanded" data-category="cv">
-                    <div class="work-content">
-                        <div class="work-info">
-                            <h3 class="work-title">Image-Enhancement-Toolkit</h3>
-                            <p class="work-description">A PyQt6 and OpenCV-based desktop application for basic image processing, currently supporting Gaussian blur with an interactive slider.</p>
-                            <div class="work-tags">
-                                <span class="work-tag">Python</span>
-                            </div>
-                        </div>
-                        <div class="work-links">
-                            <a href="https://github.com/SudoAnirudh/Image-Enhancement-Toolkit" class="work-link" target="_blank">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project: Feature-Extraction -->
-                <div class="work-item featured expanded" data-category="cv">
-                    <div class="work-content">
-                        <div class="work-info">
-                            <h3 class="work-title">Feature-Extraction</h3>
-                            <p class="work-description">Extract and visualize features such as boundaries and patterns from aerial or satellite images.</p>
-                            <div class="work-tags">
-                                <span class="work-tag">Jupyter Notebook</span>
-                                <span class="work-tag">Python</span>
-                            </div>
-                        </div>
-                        <div class="work-links">
-                            <a href="https://github.com/SudoAnirudh/Feature-Extraction" class="work-link" target="_blank">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project: Intrusion-Detection-System-Using-ML -->
-                <div class="work-item featured expanded" data-category="ml">
-                    <div class="work-content">
-                        <div class="work-info">
-                            <h3 class="work-title">Intrusion-Detection-System-Using-ML</h3>
-                            <p class="work-description">Uses machine learning with scikit-learn to detect network intrusions, featuring a Flask-based web interface for easy monitoring.</p>
-                            <div class="work-tags">
-                                <span class="work-tag">Jupyter Notebook</span>
-                                <span class="work-tag">HTML</span>
-                                <span class="work-tag">Python</span>
-                                <span class="work-tag">CSS</span>
-                            </div>
-                        </div>
-                        <div class="work-links">
-                            <a href="https://github.com/SudoAnirudh/Intrusion-Detection-System-Using-ML" class="work-link" target="_blank">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project: dolphin-mcp (Open Source) -->
-                <div class="work-item featured expanded" data-category="nlp">
-                    <div class="work-content">
-                        <div class="work-info">
-                            <h3 class="work-title">dolphin-mcp (Open Source)</h3>
-                            <p class="work-description">A Python library and CLI tool to query and interact with MCP servers through natural language, making their tools available to LLMs and providing a conversational interface for data access and manipulation.</p>
-                            <div class="work-tags">
-                                <span class="work-tag">Python</span>
-                            </div>
-                        </div>
-                        <div class="work-links">
-                            <a href="https://github.com/SudoAnirudh/dolphin-mcp" class="work-link" target="_blank">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
-                        </div>
-                    </div>
+        <div class="card">
+            <div class="section">
+                <h2 class="section-title">Achievements</h2>
+                <div class="achievements-list">
+                    <div class="achievement-item">Participated In National Level Hackathon</div>
+                    <div class="achievement-item">Participated In Various IEEE Events</div>
+                    <div class="achievement-item">Neo4j Certified Professional</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Contact</h2>
-            <form class="contact-form" action="send_email.php" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </section>
+    <script>
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-    <script src="script.js"></script>
+        // Scroll progress indicator
+        window.addEventListener('scroll', function() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Typing effect for the name
+        const nameElement = document.querySelector('.name');
+        const originalText = nameElement.textContent;
+        nameElement.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                nameElement.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        
+        setTimeout(typeWriter, 500);
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('show', window.scrollY > 300);
+        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Animate skill bars on scroll
+        document.querySelectorAll('.bar-fill').forEach(bar => {
+            bar.style.width = '0';
+        });
+        const skillObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.getAttribute('style').split(':')[1];
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.bar-fill').forEach(bar => skillObserver.observe(bar));
+    </script>
 </body>
 </html>
-<!-- End Futuristic Portfolio Structure -->
