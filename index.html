@@ -3,694 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anirudh S - AI & ML Engineer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(90deg, #181c24 60%, #232946 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 2rem 0;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .name {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item {
-            color: #34495e;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            background: rgba(52, 73, 94, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: rgba(52, 73, 94, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-link {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem 1rem;
-            border: 2px solid #3498db;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: #3498db;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .section {
-            margin: 2rem 0;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-        }
-
-        .summary {
-            font-size: 1.1rem;
-            text-align: center;
-            color: #555;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .education-item, .experience-item {
-            margin-bottom: 1.5rem;
-            padding: 1.5rem;
-            background: rgba(52, 73, 94, 0.05);
-            border-radius: 10px;
-            border-left: 4px solid #3498db;
-        }
-
-        .education-title, .experience-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-details, .experience-details {
-            color: #7f8c8d;
-            margin-bottom: 0.5rem;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-category {
-            background: rgba(52, 73, 94, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #e74c3c;
-        }
-
-        .skill-category h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: rgba(231, 76, 60, 0.1);
-            color: #e74c3c;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: rgba(52, 73, 94, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #f39c12;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .project-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-link {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .project-link:hover {
-            text-decoration: underline;
-        }
-
-        .project-tech {
-            color: #f39c12;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-description {
-            color: #555;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .cert-item {
-            background: rgba(52, 73, 94, 0.05);
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 4px solid #27ae60;
-            text-align: center;
-        }
-
-        .cert-title {
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .cert-issuer {
-            color: #27ae60;
-            font-weight: 500;
-        }
-
-        .achievements-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .achievement-item {
-            background: rgba(52, 73, 94, 0.05);
-            padding: 1rem 1.5rem;
-            border-radius: 25px;
-            border: 2px solid #9b59b6;
-            color: #9b59b6;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .achievement-item:hover {
-            background: #9b59b6;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .card {
-                padding: 2rem;
-            }
-            
-            .name {
-                font-size: 2rem;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.3);
-            z-index: 1000;
-        }
-
-        .scroll-progress {
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        /* Theme Toggle */
-        #themeToggle {
-            position: fixed; top: 1rem; right: 1rem;
-            background: none; border: none; font-size: 1.5rem; cursor: pointer;
-            color: #6366f1; transition: color 0.2s;
-        }
-        #themeToggle:hover { color: #10b981; }
-
-        /* Skill Bar */
-        .skill-bar { margin-bottom: 1rem; }
-        .skill-bar span { font-weight: 600; }
-        .bar-bg {
-            background: #e5e7eb; border-radius: 8px; height: 8px; width: 100%; margin-top: 0.3rem;
-        }
-        .bar-fill {
-            background: linear-gradient(90deg, #6366f1, #10b981);
-            height: 100%; border-radius: 8px;
-            transition: width 1s cubic-bezier(.4,2,.6,1);
-        }
-
-        /* Project Card Hover Reveal */
-        .project-card { position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 2px 12px #0002; }
-        .project-front, .project-back { padding: 1.2rem; transition: transform 0.4s; }
-        .project-back { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #fff; color: #181c24; transform: translateY(100%); }
-        .project-card:hover .project-back { transform: translateY(0); }
-        .project-card:hover .project-front { transform: translateY(-100%); }
-
-        /* Back to Top Button */
-        #backToTop {
-            position: fixed; bottom: 2rem; right: 2rem;
-            background: #6366f1; color: #fff; border: none; border-radius: 50%;
-            width: 40px; height: 40px; font-size: 1.5rem; display: none; align-items: center; justify-content: center;
-            box-shadow: 0 2px 8px #6366f1aa; cursor: pointer; z-index: 1000;
-        }
-        #backToTop.show { display: flex; }
-
-        .glass-bg {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(12px);
-            pointer-events: none;
-        }
-    </style>
+    <title>Anirudh S - AI/ML Enthusiast</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
-    <div class="scroll-indicator">
-        <div class="scroll-progress" id="scrollProgress"></div>
-    </div>
 
-    <div class="container">
-        <div class="card">
-            <div class="header">
-                <h1 class="name">Anirudh S</h1>
-                <p class="subtitle">AI & ML Engineering Student</p>
-                <div class="contact-info">
-                    <a href="mailto:anirudhsudheer@gmail.com" class="contact-item">anirudhsudheer@gmail.com</a>
-                    <a href="tel:+919539102851" class="contact-item">+91 95391 02851</a>
-                    <span class="contact-item">Kozhikode, Kerala, India</span>
-                </div>
-                <div class="social-links">
-                    <a href="https://sudoanirudh.github.io/portfolio/" class="social-link" target="_blank">Portfolio</a>
-                    <a href="https://github.com/SudoAnirudh" class="social-link" target="_blank">GitHub</a>
-                    <a href="https://www.linkedin.com/in/sudoanirudh/" class="social-link" target="_blank">LinkedIn</a>
-                </div>
+    <header id="header">
+        <nav>
+            <div class="logo">Anirudh S</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#linkedin">LinkedIn</a></li>
+                <li><a href="Resume.pdf" target="_blank">Resume</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <button id="themeToggle" aria-label="Toggle light/dark mode"><i class="fas fa-moon"></i></button>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <img src="profile.jpg" alt="Anirudh S" class="profile-pic">
+            <h1 class="hero-title">Anirudh S</h1>
+            <p class="hero-tagline"><span id="typedTagline"></span><span class="typing-cursor">|</span></p>
+            <a href="#projects" class="cta-button">View My Work</a>
+            <a href="https://drive.google.com/file/d/19s62bml6zTAdGErfrrXUwi4Qr3fCGMwK/view?usp=drivesdk" class="cta-button" target="_blank" rel="noopener">Download Resume</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="projects" data-aos="fade-up">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-content">
+                        <h3 class="project-title">BlinkDetection</h3>
+                        <p class="project-description">A Python project that detects blinks in real-time video using OpenCV and facial landmarks.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>OpenCV</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SudoAnirudh/BlinkDetection" target="_blank"><i class="fab fa-github"></i> GitHub</a>
             </div>
         </div>
-
-        <div class="card">
-            <div class="section">
-                <h2 class="section-title">Summary</h2>
-                <p class="summary">
-                    I'm a dedicated AI & ML engineering student with a strong foundation in Python and C programming. My passion for AI and its potential to shape the future drives me to continuously explore emerging technologies and innovate. I'm eager to apply my skills and knowledge to solve real-world problems and contribute to the advancement of artificial intelligence.
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section">
-                <h2 class="section-title">Education</h2>
-                <div class="education-item">
-                    <div class="education-title">B.E Artificial Intelligence And Machine Learning</div>
-                    <div class="education-details">Srinivas Institute Of Technology, Mangalore | September 2022 - 2026</div>
-                    <div class="education-details"><strong>CGPA:</strong> 7.26</div>
                 </div>
-                <div class="education-item">
-                    <div class="education-title">Bio Science Pre-University</div>
-                    <div class="education-details">Nhss Vakayad, Kozhikode | June 2020 - March 2022</div>
-                    <div class="education-details"><strong>Percentage:</strong> 85%</div>
-                </div>
-                <div class="education-item">
-                    <div class="education-title">Secondary School</div>
-                    <div class="education-details">Ghss Naduvannur, Kozhikode | June 2019 - March 2020</div>
-                    <div class="education-details"><strong>Percentage:</strong> 95%</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section">
-                <h2 class="section-title">Experience</h2>
-                <div class="experience-item">
-                    <div class="experience-title">Data Science Master Virtual Intern</div>
-                    <div class="experience-details">EduSkills Foundations | January 2025 - March 2025</div>
-                    <div class="experience-details">Supported By ALTAIR</div>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-title">Zero Trust Cloud Security Virtual Intern</div>
-                    <div class="experience-details">EduSkills Foundations | April 2025 - June 2025</div>
-                    <div class="experience-details">Supported By Zscaler</div>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-title">AI Intern</div>
-                    <div class="experience-details">Codec Technologies | April 2025 - May 2025</div>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-title">Android Developer Virtual Intern</div>
-                    <div class="experience-details">Eduskills Foundations | October 2024 - December 2024</div>
-                    <div class="experience-details">Supported By Google Cloud</div>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-title">Gen AI Virtual Intern</div>
-                    <div class="experience-details">EduSkills Foundations | July 2024 - September 2024</div>
-                    <div class="experience-details">Supported By Google Cloud</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section">
-                <h2 class="section-title">Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Programming Languages</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">C Language</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">Dart</span>
-                            <span class="skill-tag">PHP</span>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-content">
+                        <h3 class="project-title">Age Gender Detection</h3>
+                        <p class="project-description">This project uses deep learning to classify age and gender from images, leveraging CNNs and OpenCV.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>Deep Learning</span><span>OpenCV</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SudoAnirudh/Age_Gender_Detection" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Libraries/Frameworks</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Django</span>
-                            <span class="skill-tag">NumPy</span>
-                            <span class="skill-tag">Pandas</span>
-                            <span class="skill-tag">Matplotlib</span>
-                            <span class="skill-tag">Seaborn</span>
-                            <span class="skill-tag">Flask</span>
-                            <span class="skill-tag">scikit-learn</span>
-                            <span class="skill-tag">Flutter</span>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-content">
+                        <h3 class="project-title">Customer Churn Prediction</h3>
+                        <p class="project-description">Uses machine learning to predict which customers are likely to leave a company.</p>
+                        <div class="project-tech">
+                            <span>Jupyter</span><span>ML</span>
                         </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Tools / Platforms</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">VS Code</span>
-                            <span class="skill-tag">Excel</span>
-                            <span class="skill-tag">Power BI</span>
-                            <span class="skill-tag">Tableau</span>
-                            <span class="skill-tag">Jupyter Notebook</span>
-                            <span class="skill-tag">Anaconda</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Databases</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">MongoDB</span>
+                        <div class="project-links">
+                            <a href="https://github.com/SudoAnirudh/Customer_Churn_Prediction" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="card">
-            <div class="section">
-                <h2 class="section-title">Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-title">BlinkDetection</div>
-                        <div class="project-tech">Python, Computer Vision</div>
-                        <div class="project-description">
-                            A Python project that detects blinks in real-time video using OpenCV and facial landmarks, providing live visual feedback and a blink counter.
-                        </div>
-                        <a href="https://github.com/SudoAnirudh/BlinkDetection" class="project-link" target="_blank">View Project</a>
+        <section id="skills" data-aos="fade-up">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                 <div class="skill-category" data-aos="fade-right">
+                    <h3>Programming</h3>
+                    <div class="skill-item"><i class="fab fa-python"></i> Python</div>
+                    <div class="skill-item"><i class="fas fa-c"></i> C Language</div>
+                    <div class="skill-item"><i class="fab fa-java"></i> Java</div>
+                    <div class="skill-item"><i class="fab fa-php"></i> PHP</div>
+                    <div class="skill-item"><i class="fab fa-dashcube"></i> Dart</div>
+                </div>
+                <div class="skill-category" data-aos="fade-up">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skill-item"><i class="fab fa-python"></i> Django</div>
+                    <div class="skill-item"><i class="fas fa-chart-bar"></i> NumPy</div>
+                    <div class="skill-item"><i class="fas fa-chart-line"></i> Pandas</div>
+                    <div class="skill-item"><i class="fas fa-chart-area"></i> Matplotlib</div>
+                    <div class="skill-item"><i class="fas fa-project-diagram"></i> scikit-learn</div>
+                    <div class="skill-item"><i class="fab fa-flutter"></i> Flutter</div>
+                </div>
+                 <div class="skill-category" data-aos="fade-left">
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-item"><i class="fab fa-git-alt"></i> Git</div>
+                    <div class="skill-item"><i class="fas fa-code"></i> VS Code</div>
+                    <div class="skill-item"><i class="fas fa-table"></i> Power BI</div>
+                    <div class="skill-item"><i class="fas fa-chart-pie"></i> Tableau</div>
+                    <div class="skill-item"><i class="fas fa-book"></i> Jupyter</div>
+                </div>
+                <div class="skill-category" data-aos="fade-up">
+                    <h3>Databases</h3>
+                    <div class="skill-item"><i class="fas fa-database"></i> SQL</div>
+                    <div class="skill-item"><i class="fas fa-leaf"></i> MongoDB</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" data-aos="fade-up">
+            <h2 class="section-title">Education</h2>
+            <div class="education-blocks">
+                <div class="education-block">
+                    <div class="education-school"><strong>Srinivas Institute of Technology, Mangalore</strong> <span class="education-date">Sep 2022 – Present</span></div>
+                    <div class="education-details">B.E in Artificial Intelligence and Machine Learning<br><strong>CGPA:</strong> 7.26</div>
+                </div>
+                <div class="education-block">
+                    <div class="education-school"><strong>NHSS Vakayad, Kozhikode</strong> <span class="education-date">Jun 2020 – Mar 2022</span></div>
+                    <div class="education-details">Pre-University – Bio Science<br><strong>Percentage:</strong> 85%</div>
+                </div>
+                <div class="education-block">
+                    <div class="education-school"><strong>GHSS Naduvannur, Kozhikode</strong> <span class="education-date">Jun 2019 – Mar 2020</span></div>
+                    <div class="education-details">Secondary School<br><strong>Percentage:</strong> 95%</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" data-aos="fade-up">
+            <h2 class="section-title">Experience & Certifications</h2>
+            <div class="experience-cards">
+                <div class="experience-card">
+                    <div class="experience-accent"></div>
+                    <div class="experience-content">
+                        <div class="experience-company"><strong>Codec Technologies</strong></div>
+                        <div class="experience-role">AI Intern</div>
+                        <div class="experience-date">Apr 2025 – May 2025 (Virtual)</div>
                     </div>
-                    <div class="project-card">
-                        <div class="project-title">Age Gender Detection</div>
-                        <div class="project-tech">Python, Computer Vision</div>
-                        <div class="project-description">
-                            This project uses deep learning to classify age and gender from images, leveraging CNNs and OpenCV for accuracy.
-                        </div>
-                        <a href="https://github.com/SudoAnirudh/Age_Gender_Detection" class="project-link" target="_blank">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-title">Customer Churn Prediction</div>
-                        <div class="project-tech">Jupyter Notebook</div>
-                        <div class="project-description">
-                            Uses machine learning to predict which customers are likely to leave a company, helping businesses take action to retain them.
-                        </div>
-                        <a href="https://github.com/SudoAnirudh/Customer_Churn_Prediction" class="project-link" target="_blank">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-title">Stock Price Predictor</div>
-                        <div class="project-tech">Python</div>
-                        <div class="project-description">
-                            Predicts stock prices using machine learning models like Random Forest and LSTM. Features a Streamlit web app for interactive stock analysis.
-                        </div>
-                        <a href="https://github.com/SudoAnirudh/Stock_Price_Predictor" class="project-link" target="_blank">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-title">Intrusion Detection System</div>
-                        <div class="project-tech">Python, HTML, CSS</div>
-                        <div class="project-description">
-                            Uses machine learning with scikit-learn to detect network intrusions, featuring a Flask-based web interface for easy monitoring.
-                        </div>
-                        <a href="https://github.com/SudoAnirudh/Intrusion-Detection-System-Using-ML" class="project-link" target="_blank">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-title">Dolphin MCP (Open Source)</div>
-                        <div class="project-tech">Python</div>
-                        <div class="project-description">
-                            A Python library and CLI tool for querying MCP servers through natural language, connecting to language models for conversational data access.
-                        </div>
-                        <a href="https://github.com/SudoAnirudh/dolphin-mcp" class="project-link" target="_blank">View Project</a>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-accent"></div>
+                    <div class="experience-content">
+                        <div class="experience-company"><strong>Eduskills Foundation</strong></div>
+                        <div class="experience-role">Internships:</div>
+                        <ul class="experience-list">
+                            <li><strong>AI-ML Intern</strong> <span class="experience-date">Jan 2024 – Mar 2024</span> <br><em>Supported by Google for Developers</em></li>
+                            <li><strong>Cybersecurity Intern</strong> <span class="experience-date">Apr 2019 – Jun 2024</span> <br><em>Supported by Palo Alto Networks</em></li>
+                            <li><strong>Gen AI Intern</strong> <span class="experience-date">Jul 2024 – Sep 2024</span> <br><em>Supported by Google Cloud</em></li>
+                            <li><strong>Android Developer Intern</strong> <span class="experience-date">Oct 2024 – Dec 2024</span> <br><em>Supported by Google Cloud</em></li>
+                            <li><strong>Data Science Master Intern</strong> <span class="experience-date">Jan 2025 – Mar 2025</span> <br><em>Supported by ALTAIR</em></li>
+                            <li><strong>Zero Trust Cloud Security Intern</strong> <span class="experience-date">Apr 2025 – Jun 2025</span> <br><em>Supported by Zscaler</em></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="card">
-            <div class="section">
-                <h2 class="section-title">Certifications</h2>
-                <div class="certifications-grid">
-                    <div class="cert-item">
-                        <div class="cert-title">Introduction to Generative AI</div>
-                        <div class="cert-issuer">Google Cloud</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-title">Machine Learning for All</div>
-                        <div class="cert-issuer">Coursera</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-title">Artificial Intelligence</div>
-                        <div class="cert-issuer">Certiport, Pearson</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-title">Fundamentals of Cybersecurity</div>
-                        <div class="cert-issuer">Zscaler Training</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-title">Machine Learning Foundation</div>
-                        <div class="cert-issuer">Infosys SpringBoard</div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-title">Principles Of Generative AI</div>
-                        <div class="cert-issuer">Infosys SpringBoard</div>
-                    </div>
+        <section id="linkedin" data-aos="fade-up">
+            <h2 class="section-title">Connect on LinkedIn</h2>
+             <div class="linkedin-card">
+                 <a href="https://www.linkedin.com/in/sudoanirudh/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>Anirudh S</h3>
+                    <p>Let's connect and build something amazing together. Follow my professional journey on LinkedIn.</p>
+                </a>
+        </div>
+        </section>
+
+        <section id="contact" data-aos="fade-up">
+            <h2 class="section-title">Contact Me</h2>
+            <form class="contact-form" id="contactForm" action="send_email.php" method="POST" autocomplete="off">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section">
-                <h2 class="section-title">Achievements</h2>
-                <div class="achievements-list">
-                    <div class="achievement-item">Participated In National Level Hackathon</div>
-                    <div class="achievement-item">Participated In Various IEEE Events</div>
-                    <div class="achievement-item">Neo4j Certified Professional</div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+                <div id="formStatus" class="form-status"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <p>&copy; 2024 Anirudh S. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/SudoAnirudh" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/sudoanirudh/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:anirudhsudheer@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
-    </div>
+    </footer>
 
-    <script>
-        // Smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Scroll progress indicator
-        window.addEventListener('scroll', function() {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            scrollProgress.style.width = scrolled + '%';
-        });
-
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-
-        // Typing effect for the name
-        const nameElement = document.querySelector('.name');
-        const originalText = nameElement.textContent;
-        nameElement.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < originalText.length) {
-                nameElement.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        };
-        
-        setTimeout(typeWriter, 500);
-
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-        });
-
-        // Back to Top Button
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            backToTop.classList.toggle('show', window.scrollY > 300);
-        });
-        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        // Animate skill bars on scroll
-        document.querySelectorAll('.bar-fill').forEach(bar => {
-            bar.style.width = '0';
-        });
-        const skillObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.width = entry.target.getAttribute('style').split(':')[1];
-                }
-            });
-        }, { threshold: 0.5 });
-        document.querySelectorAll('.bar-fill').forEach(bar => skillObserver.observe(bar));
-    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
