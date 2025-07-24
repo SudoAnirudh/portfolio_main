@@ -18,7 +18,7 @@
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#linkedin">LinkedIn</a></li>
                 <li><a href="Resume.pdf" target="_blank">Resume</a></li>
             </ul>
@@ -200,7 +200,7 @@
 
         <section id="contact" data-aos="fade-up">
             <h2 class="section-title">Contact Me</h2>
-            <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify autocomplete="off">
+            <form class="contact-form" id="contactForm" autocomplete="off">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -229,6 +229,27 @@
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init('ZVZK8lqFRJzbUE3Di'); // Replace with your EmailJS public key
+        })();
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = this;
+            var status = document.getElementById('formStatus');
+            status.textContent = 'Sending...';
+            emailjs.sendForm('service_ao269fh', 'template_l6g472j', form)
+                .then(function() {
+                    status.textContent = 'Message sent successfully!';
+                    form.reset();
+                }, function(error) {
+                    status.textContent = 'Failed to send message. Please try again later.';
+                });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
