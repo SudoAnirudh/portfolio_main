@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anirudh S - Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <div class="logo">Anirudh S</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <section id="blog" data-aos="fade-up">
+            <h2 class="section-title">Blog</h2>
+            <div id="blog-posts">
+                <!-- Blog posts will be dynamically inserted here -->
+            </div>
+            <div class="add-post-section">
+                <h3>Add a New Post</h3>
+                <form id="addPostForm" enctype="multipart/form-data">
+                    <input type="text" id="postTitle" placeholder="Title" required><br>
+                    <textarea id="postContent" placeholder="Write your post here..." rows="5" required></textarea><br>
+                    <input type="file" id="postImage" accept="image/*"><br>
+                    <button type="submit" class="cta-button">Publish</button>
+                </form>
+            </div>
+            <!-- Featured/News Section -->
+            <section id="featured-news" style="margin-top: 2em;">
+                <h2 class="section-title">Featured / News</h2>
+                <div id="featured-posts">
+                    <!-- Featured posts will be dynamically inserted here -->
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer id="footer">
+        <p>&copy; 2025 Anirudh S. All Rights Reserved.</p>
+    </footer>
+    <script src="blog.js"></script>
+</body>
+</html>

@@ -41,6 +41,13 @@
     </section>
 
     <main class="container">
+        <!-- News/Blog Section -->
+        <section id="news" data-aos="fade-up">
+            <h2 class="section-title">Latest Blog Posts</h2>
+            <div id="news-cards">
+                <!-- News cards will be dynamically inserted here -->
+            </div>
+        </section>
         <section id="projects" data-aos="fade-up">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
@@ -252,6 +259,35 @@
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    // News/blog cards loader
+    document.addEventListener('DOMContentLoaded', function() {
+        const newsCards = document.getElementById('news-cards');
+        if (!newsCards) return;
+        const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+        if (posts.length === 0) {
+            newsCards.innerHTML = '<p>No blog posts yet. Visit the <a href="blog.html">blog</a> to add one!</p>';
+        } else {
+            posts.slice(-3).reverse().forEach(post => {
+                const card = document.createElement('div');
+                card.className = 'news-card';
+                let imgHtml = '';
+                if (post.image) {
+                    imgHtml = `<img src="${post.image}" alt="Post Image" class="news-card-image" style="max-width:100%;height:120px;object-fit:cover;">`;
+                }
+                card.innerHTML = `
+                    <div class="news-card-content">
+                        ${imgHtml}
+                        <h4>${post.title}</h4>
+                        <p>${post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content}</p>
+                        <span class="blog-date">${post.date}</span>
+                    </div>
+                `;
+                newsCards.appendChild(card);
+            });
+        }
+    });
+    </script>
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
